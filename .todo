@@ -1,6 +1,9 @@
 TODO
-- Nick genérico
+-Nick genérico (salvar no local storage)
 - Url como senha
 - Melhorar estrutura de pastas
 - Persistência
 - "Fulano" está digitando...
+- Upload de arquivos
+- Preview de links
+- Room ou Namespace
