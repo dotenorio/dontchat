@@ -1,10 +1,13 @@
-var app = require('express')();
+var express = require('express');
+var app = express();
 var http = require('http').Server(app);
 var io = module.exports.io = require('socket.io')(http);
 var crypto = module.exports.crypto = require('crypto');
 require('./src/room');
 
 require('./config/globals');
+
+app.use(express.static(VIEWS_PATH + '/assets'));
 
 app.get('/', function(req, res){
   res.sendFile(VIEWS_PATH + '/index.html');
