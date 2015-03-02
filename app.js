@@ -5,7 +5,6 @@ var crypto = module.exports.crypto = require('crypto');
 require('./src/room');
 
 require('./config/globals');
-console.log(VIEWS_PATH);
 
 app.get('/', function(req, res){
   res.sendFile(VIEWS_PATH + '/index.html');

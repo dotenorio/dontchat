@@ -4,6 +4,10 @@ TODO
 -Room ou Namespace
 -"Fulano" está digitando...
 -Melhorar estrutura de pastas
+-Limpa a caixa de mensagem, sumir o digitando
 - Persistência (Chat, Nick)
 - Preview de links
 - Upload de arquivos
+- Scroll Automatico
+- Feedback
+- concatenar 'fulano, ciclano estão digitando'
