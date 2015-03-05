@@ -1,60 +1,67 @@
-var messages = $('#messages');
-var form = $('form');
-var input = $('#m');
-var log = $('#log');
-var scrollTop = function() {
-  var height = messages.height();
-  $('body').scrollTop(height);
+/////////Variables//////////
+
+var dc = {
+  socket: null,
+  nick: null,
+  messages: $('#messages'),
+  form: $('form'),
+  input: $('#m'),
+  _log: 'log',
+  log: $('#log'),
+  scrollTop: function() {
+    var height = dc.messages.height();
+    $('body').scrollTop(height);
+  }
 }
+
+/////////jQuery//////////
 
 $(function() {
 
   $(window).resize(function() {
-    scrollTop();
+    dc.scrollTop();
   });
 
-  form.submit(function() {
+  dc.form.submit(function() {
     var messageObj = {
-      nick: localStorage.getItem('nick'),
-      message: input.val()
+      nick: dc.nick,
+      message: dc.input.val()
     }
-    socket.emit('chat message', messageObj);
-    input.val('');
+    dc.socket.emit('chat message', messageObj);
+    dc.input.val('');
     return false;
   });
 
-  input.on('keyup', function() {
-    nick = localStorage.getItem('nick');
+  dc.input.on('keyup', function() {
     if ($(this).val().length > 0) {
-      socket.emit('chat writing', nick);
+      dc.socket.emit('chat writing', dc.nick);
     } else {
-      $('#log-' + nick).remove();  
+      $('#' + dc._log + '-' + dc.nick).remove();  
     }
   });
 
 });
 
-///////////////////////////
-
-var socket = null;
+/////////Socket.IO//////////
 
 (function () {
 
   var onChatMessage = function(msgObj) {
     var msg = '<b>' + msgObj.nick + ':</b> ' + msgObj.message;
-    messages.append($('<li>').html(msg));
-    scrollTop();
-    $('#log-' + msgObj.nick).remove();
+    dc.messages.append($('<li>').html(msg));
+    dc.scrollTop();
+    $('#' + dc._log + '-' + msgObj.nick).remove();
   };
 
   var onChatNick = function(nick){
     localStorage.setItem('nick', nick);
+    dc.nick = nick;
   };
 
   var onChatWriting = function(nick){
-    var id = 'log-' + nick;
+    var id = dc._log + '-' + nick;
     if ( $('#' + id).size() === 0 ) {
-      log.append('<li id="' + id + '">' + nick + ' está digitando...</li>');
+      dc.log.append('<li id="' + id + '">' + dc.nick + ' está digitando...</li>');
       $('#' + id).delay(10000).fadeOut(function() {
         $(this).remove();
       });
@@ -71,11 +78,11 @@ var socket = null;
   }
 
   var connectToSocketIo = function () {
-    socket = io();
-    socket.emit('chat enter room', emitChatEnterRoom);
-    socket.on('chat message', onChatMessage);
-    socket.on('chat nick', onChatNick);
-    socket.on('chat writing', onChatWriting);
+    dc.socket = io();
+    dc.socket.emit('chat enter room', emitChatEnterRoom);
+    dc.socket.on('chat message', onChatMessage);
+    dc.socket.on('chat nick', onChatNick);
+    dc.socket.on('chat writing', onChatWriting);
   };
 
   connectToSocketIo();
