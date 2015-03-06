@@ -3,15 +3,25 @@
   <head>
     <title>Don't Chat</title>
     <link rel="stylesheet" type="text/css" href="/css/dc.css">
+    <link rel="stylesheet" href="/lib/bootstrap-3.3.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/lib/bootstrap-3.3.2/css/bootstrap-theme.min.css">
   </head>
   <body>
-    <ul id="messages" style="margin-bottom: 60px;"></ul>
-    <form action="">
-      <ul id="log" style="color: #FFF"></ul>
-      <input id="m" autocomplete="off" /><button>Send</button>
-    </form>
-    <script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
-    <script src="http://code.jquery.com/jquery-1.11.1.js"></script>
+    <ul id="messages" class="list-unstyled"></ul>
+    <div class="form-box">
+      <ul id="log" class="list-unstyled small"></ul>
+      <form>
+        <div class="input-group">
+          <input id="m" autocomplete="off" class="form-control" />
+          <span class="input-group-btn">
+            <button class="btn btn-success">Send</button>
+          </span>
+        </div>
+      </form>
+    </div>
+    <script src="/js/socket.io-1.2.0.js"></script>
+    <script src="/js/jquery-1.11.1.min.js"></script>
+    <script src="/lib/bootstrap-3.3.2/js/bootstrap.min.js"></script>
     <script src="/js/dc.js"></script>
     <script src="/js/room.js"></script>
   </body>
