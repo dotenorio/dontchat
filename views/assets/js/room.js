@@ -1,4 +1,4 @@
-/////////Variables//////////
+/////////Variables and Functions//////////
 
 var dc = {
   socket: null,
@@ -12,6 +12,28 @@ var dc = {
   scrollTop: function() {
     var height = dc.messages.height();
     $('body').scrollTop(height);
+  },
+  writingLog: function() {
+    var id = dc._log + '-item';
+    var writingUnique = dc.writing.getUnique();
+    var writingUniqueLength = writingUnique.length;
+    if(writingUniqueLength > 0) {
+      var estaPlural = (writingUniqueLength == 1) ? 'está' : 'estão';
+      var whoWriting = writingUnique.toString();
+      var lastComma = whoWriting.lastIndexOf(',');
+      whoWriting = whoWriting.slice(0, lastComma) + whoWriting.slice(lastComma).replace(',', ' e ');
+      whoWriting = whoWriting.replace(new RegExp(','), ', ');
+      dc.log.html('<li id="' + id + '">' + whoWriting + ' ' + estaPlural + ' digitando...</li>');
+      $('#' + id).delay(10000).fadeOut(function() {
+        $(this).remove();
+      });
+    } else {
+      $('#' + id).remove();
+    }
+  },
+  writingRemoveItem: function(nick) {
+    dc.writing.removeItem(nick);
+    dc.writingLog();
   }
 }
 
@@ -37,8 +59,8 @@ $(function() {
     if ($(this).val().length > 0) {
       dc.socket.emit('chat writing', dc.nick);
     } else {
-      $('#' + dc._log + '-' + dc.nick).remove();
-      dc.writing.removeItem(dc.nick);
+      dc.writingRemoveItem(dc.nick);
+      dc.socket.emit('chat writing remove', dc.nick);
     }
   });
 
@@ -52,7 +74,7 @@ $(function() {
     var msg = '<b>' + msgObj.nick + ':</b> ' + msgObj.message;
     dc.messages.append($('<li>').html(msg));
     dc.scrollTop();
-    $('#' + dc._log + '-' + msgObj.nick).remove();
+    dc.writingRemoveItem(msgObj.nick);
   };
 
   var onChatNick = function(nick) {
@@ -62,18 +84,11 @@ $(function() {
 
   var onChatWriting = function(nick) {
     dc.writing.push(nick);
-    var writingUnique = dc.writing.getUnique();
-    console.log(writingUnique);
-    var id = dc._log + '-item';
-    var estaPlural = (writingUnique.length == 1) ? 'está' : 'estão';
-    var whoWriting = writingUnique.toString();
-    var lastComma = whoWriting.lastIndexOf(',');
-    whoWriting = whoWriting.slice(0, lastComma) + whoWriting.slice(lastComma).replace(',', ' e ');
-    whoWriting = whoWriting.replace(new RegExp(','), ', ');
-    dc.log.html('<li id="' + id + '">' + whoWriting + ' ' + estaPlural + ' digitando...</li>');
-    $('#' + id).delay(10000).fadeOut(function() {
-      $(this).remove();
-    });
+    dc.writingLog();
+  };
+
+  var onChatWritingRemove = function(nick) {
+    dc.writingRemoveItem(nick);
   };
 
   var emitChatEnterRoom = function() {
@@ -91,6 +106,7 @@ $(function() {
     dc.socket.on('chat message', onChatMessage);
     dc.socket.on('chat nick', onChatNick);
     dc.socket.on('chat writing', onChatWriting);
+    dc.socket.on('chat writing remove', onChatWritingRemove);
   };
 
   connectToSocketIo();
