@@ -2,8 +2,11 @@ doctype html
 html
   include partials/head.jade
   body
-    a(href='/teste')
-      | Entrar na sala 
-      b teste
-    |  
+    .jumbotron
+      .container
+        h1 Don't Chat!
+        p Experimente um pouco de um chat realmente privado
+        p
+          a.btn.btn-primary.btn-lg(href='/teste') Entrar na sala  
+            b teste
     include partials/foot.jade
