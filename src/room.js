@@ -10,8 +10,8 @@ io.on('connection', function(socket) {
       io.to(password).emit('chat message', msg);
     });
     socket.on('chat writing', function(nick) {
-      //socket.broadcast.to(password).emit('chat writing', nick);
-      io.to(password).emit('chat writing', nick); //for tests
+      socket.broadcast.to(password).emit('chat writing', nick);
+      // io.to(password).emit('chat writing', nick); //for dev
     });
     socket.on('chat writing remove', function(nick) {
       socket.broadcast.to(password).emit('chat writing remove', nick);
