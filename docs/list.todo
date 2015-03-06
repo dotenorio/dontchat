@@ -9,8 +9,9 @@ TODO
 -Concatenar 'fulano, ciclano e zé estão digitando' (Remover quando naõ estiver mais digitando e Refatorar todo o código que envolve está lógica)
 -Persistência (Nick)
 -Layout (Chat)
-- Feedback (salvar E-mail, Banco)
 - Layout (Home)
+- Feedback (salvar E-mail, Banco)
 - Preview de links
 - Upload de arquivos
 - Persistência (Chat Completo)
+- API externa do chat

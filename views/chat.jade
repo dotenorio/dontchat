@@ -1,0 +1,17 @@
+doctype html
+html
+  include partials/head.jade
+  body
+    ul#messages.list-unstyled
+    |     
+    .form-box
+      ul#log.list-unstyled.small
+      |       
+      form
+        .input-group
+          input#m.form-control(autocomplete='off')
+          |           
+          span.input-group-btn
+            button.btn.btn-success Send
+    |     
+    include partials/foot.jade
