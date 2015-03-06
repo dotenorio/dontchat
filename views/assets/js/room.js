@@ -78,6 +78,7 @@ $(function() {
   };
 
   var onChatNick = function(nick) {
+    nick = localStorage.getItem('nick') || nick;
     localStorage.setItem('nick', nick);
     dc.nick = nick;
   };

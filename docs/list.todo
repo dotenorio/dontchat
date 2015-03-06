@@ -7,8 +7,10 @@ TODO
 -Limpa a caixa de mensagem, sumir o digitando
 -Scroll Automatico
 -Concatenar 'fulano, ciclano e zé estão digitando' (Remover quando naõ estiver mais digitando e Refatorar todo o código que envolve está lógica)
-- Persistência (Chat, Nick)
+-Persistência (Nick)
+- Layout (Chat)
+- Feedback (salvar E-mail, Banco)
+- Layout (Home)
 - Preview de links
 - Upload de arquivos
-- Feedback
-- Layout
+- Persistência (Chat Completo)
