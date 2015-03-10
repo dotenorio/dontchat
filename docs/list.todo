@@ -12,6 +12,7 @@ TODO
 - Layout (Home)
 - Feedback (salvar E-mail, Banco)
 - Preview de links
+- API externa do chat
+- /invite (http://roomchat.co/)
 - Upload de arquivos
 - Persistência (Chat Completo)
-- API externa do chat
