@@ -26,7 +26,7 @@ $(function(){
 
 	$('#feedbackModal').on('shown.bs.modal', function () {
     $('#feedback-text').focus().val('');
-    $('#feedbackModal button.btn-success').on('click', function() {
+    $('#feedbackModal button.btn-primary').on('click', function() {
     	$('#feedbackModal #form-feedback').submit();
     });
   	$('#feedbackModal #form-feedback').on('submit', function() {
