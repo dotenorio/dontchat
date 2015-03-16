@@ -2,6 +2,11 @@ doctype html
 html
   include partials/head.jade
   body
+    div#feedback
+      button.btn.btn-xs.btn-default(type='button', data-toggle="modal", data-target="#feedbackModal")  
+        span.glyphicon.glyphicon-bullhorn(aria-hidden='true')
+        | 
+        | feedback
     ul#messages.list-unstyled
     |     
     .form-box
@@ -14,4 +19,5 @@ html
           span.input-group-btn
             button.btn.btn-success Send
     |     
+    include partials/feedback_modal.jade
     include partials/foot.jade
