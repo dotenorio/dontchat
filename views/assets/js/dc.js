@@ -19,3 +19,9 @@ Array.prototype.removeItem = function(item) {
 	}
 	return this;
 }
+
+$(function(){
+
+	$("#m").focus();
+
+});

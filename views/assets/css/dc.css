@@ -1,5 +1,5 @@
-.form-box { position: fixed; bottom: 0; padding: 0 10px 10px 5px; background: #F7F7F9; border-top: 1px solid #CCC; }
+.form-box { position: fixed; bottom: 0; padding: 0 10px 10px 5px; background: #000; border-top: 1px solid #CCC; }
 #messages { margin-bottom: 75px; padding: 5px 10px; }
 #messages li { padding: 5px; }
 #messages li:nth-child(odd) { background: #f1f1f1; }
-#log { padding: 3px 3px 0; }
+#log { padding: 3px 3px 0; color: #FFF; }
