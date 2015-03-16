@@ -23,6 +23,7 @@ Array.prototype.removeItem = function(item) {
 $(function(){
 
 	$("#m").focus();
+
 	$('#feedbackModal').on('shown.bs.modal', function () {
     $('#feedback-text').focus().val('');
     $('#feedbackModal button.btn-success').on('click', function() {
@@ -40,6 +41,12 @@ $(function(){
   		});
   		return false;
   	});
-  })
+  });
+
+  $("#createRoom").on('submit', function() {
+    var room = $('input', this).val();
+    location.href = '/' + room;
+    return false;
+  });
 
 });

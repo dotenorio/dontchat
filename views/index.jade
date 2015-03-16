@@ -5,8 +5,16 @@ html
     .jumbotron
       .container
         h1 Don't Chat!
-        p Experimente um pouco de um chat realmente privado
+        p.text-muted Try a bit of a chat really private
         p
-          a.btn.btn-primary.btn-lg(href='/teste') Entrar na sala  
-            b teste
+          a.btn.btn-primary.btn-lg(href='/demo') Enter room  
+            b demo
+        p.text-muted or create your own room:
+        form#createRoom
+          .form-group
+            div.input-group.col-sm-4
+              input.input-lg.form-control(type="text")
+              |           
+              span.input-group-btn
+                button.btn.btn-success.btn-lg Create
     include partials/foot.jade
