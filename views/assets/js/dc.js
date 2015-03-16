@@ -23,5 +23,23 @@ Array.prototype.removeItem = function(item) {
 $(function(){
 
 	$("#m").focus();
+	$('#feedbackModal').on('shown.bs.modal', function () {
+    $('#feedback-text').focus().val('');
+    $('#feedbackModal button.btn-success').on('click', function() {
+    	$('#feedbackModal #form-feedback').submit();
+    });
+  	$('#feedbackModal #form-feedback').on('submit', function() {
+  		$.post("/feedback", { 
+  			feedback: $('#feedback-text').val() 
+  		}, function(data) {
+  			$('#feedbackModal').modal('hide');
+  			$('#alertMessages span.message').html(data);
+  			$('#alertMessages').fadeIn();
+  			setTimeout("$('#alertMessages').fadeOut()", 3000);
+  			$("#m").focus();
+  		});
+  		return false;
+  	});
+  })
 
 });

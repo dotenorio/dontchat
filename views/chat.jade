@@ -2,6 +2,10 @@ doctype html
 html
   include partials/head.jade
   body
+    div#alertMessages.alert.alert-info.alert-dismissible(role='alert')
+      button.close(type='button', data-dismiss='alert', aria-label='Close')
+        span(aria-hidden='true') ×
+      span.message
     div#feedback
       button.btn.btn-xs.btn-default(type='button', data-toggle="modal", data-target="#feedbackModal")  
         span.glyphicon.glyphicon-bullhorn(aria-hidden='true')
@@ -12,7 +16,7 @@ html
     .form-box
       ul#log.list-unstyled.small
       |       
-      form
+      form#form-message
         .input-group
           input#m.form-control(autocomplete='off')
           |           

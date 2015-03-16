@@ -5,7 +5,7 @@ var dc = {
   nick: null,
   writing: [],
   messages: $('#messages'),
-  form: $('form'),
+  form: $('#form-message'),
   input: $('#m'),
   _log: 'log',
   log: $('#log'),

@@ -3,11 +3,11 @@
   "version": "0.0.1",
   "description": "Chat criado com NodeJS + Socket.IO baseado na ideia do http://dontpad.com/",
   "scripts": {
-    "start-feedback": "node node_modules/collect-feedback/bin/server.js 3001 > feedback.log",
+    "start-feedback": "node node_modules/collect-feedback/bin/server.js 3001",
     "start": "node app"
   },
   "dependencies": {
-    "collect-feedback": "0.0.2",
+    "body-parser": "^1.12.1",
     "express": "4.10.2",
     "jade": "^1.9.2",
     "socket.io": "1.2.0"
