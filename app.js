@@ -6,6 +6,7 @@ var crypto = module.exports.crypto = require('crypto');
 var jade = require('jade');
 var bodyParser = require('body-parser');
 var fs = require('fs');
+var sanitizeHtml = module.exports.sanitizeHtml = require('sanitize-html');
 
 require('./config/globals');
 require('./src/room');

@@ -46,12 +46,15 @@ $(function() {
   });
 
   dc.form.submit(function() {
-    var messageObj = {
-      nick: dc.nick,
-      message: dc.input.val()
+    var inputValue = dc.input.val();
+    if (inputValue !== '') {
+      var msgObj = {
+        nick: dc.nick,
+        message: inputValue
+      }
+      dc.socket.emit('chat message', msgObj);
+      dc.input.val('');
     }
-    dc.socket.emit('chat message', messageObj);
-    dc.input.val('');
     return false;
   });
 
