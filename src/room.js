@@ -8,7 +8,8 @@ io.on('connection', function(socket) {
   socket.on('chat enter room', function(password) {
     socket.join(password);
     socket.on('chat message', function(msgObj) {
-      msgObj.message = sanitizeHtml(msgObj.message, {
+      var message = msgObj.message.substring(0, 500);
+      msgObj.message = sanitizeHtml(message, {
         allowedTags: [],
         allowedAttributes: []
       });

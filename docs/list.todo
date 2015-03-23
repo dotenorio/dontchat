@@ -16,3 +16,8 @@ TODO
 - /invite (http://roomchat.co/)
 - Upload de arquivos
 - Persistência (Chat Completo)
+
+- Limite do input
+- Anti-spam
+- Evitar repetição de mensagem
+- Colocar a lista de usuários ou pelo menos um contador
